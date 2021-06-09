@@ -1,6 +1,6 @@
 # Spike-Element-Wise-ResNet
 
-This repository contains the codes for the paper [Deep Residual Learning in Spiking Neural Networks](https://arxiv.org/abs/2102.04159). We used a identical seed during training, and we can ensure that the user can get almost the same accuracy when using our codes to train. Some of the trained models for ImageNet are available at: https://figshare.com/articles/software/Spike-Element-Wise-ResNet/14752998
+This repository contains the codes for the paper [Deep Residual Learning in Spiking Neural Networks](https://arxiv.org/abs/2102.04159). We used a identical seed during training, and we can ensure that the user can get almost the same accuracy when using our codes to train. Some of the trained models for ImageNet are available at: https://figshare.com/articles/software/Spike-Element-Wise-ResNet/14752998 .
 
 ## Dependency
 
