@@ -279,7 +279,7 @@ def main(args):
             if save_max:
                 utils.save_on_master(
                     checkpoint,
-                    os.path.join(output_dir, 'checkpoint_max_val_acc1.pth'))
+                    os.path.join(output_dir, 'checkpoint_max_test_acc1.pth'))
         print(args)
         total_time = time.time() - start_time
         total_time_str = str(datetime.timedelta(seconds=int(total_time)))
