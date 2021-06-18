@@ -62,7 +62,7 @@ python train.py --tb --amp --output-dir ./logs --model SpikingResNet --device cu
 Train the SEW ResNet:
 
 ```bash
-python train.py --tb --amp --output-dir ./logs --model SEWResNet --connect_f ADD --device cuda:0 --lr-step-size 64 --epoch 192 --T_train 12 --T 16 --data-path /raid/wfang/datasets/DVS128Gesture
+python train.py --tb --amp --output-dir ./logs --model SEWResNet --connect_f ADD --device cuda:0 --lr-step-size 64 --epoch 192 --T_train 12 --T 16 --data-path /raid/wfang/datasets/DVS128Gesture --lr 0.001
 ```
 
 Train the Plain Net:
