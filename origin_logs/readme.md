@@ -1,0 +1,2 @@
+This directory contains the tensorboard logs from the origin codes. Note that in the origin codes, `spking resnet` is called as `mem_add_resnet2`, while `sew resnet` is called as `spiking resnet`. We have corrected the names in the new codes  in `../imagenet`, which are consistent with the paper.
+
