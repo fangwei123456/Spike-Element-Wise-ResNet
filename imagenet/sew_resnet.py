@@ -1,9 +1,12 @@
 import torch
 import torch.nn as nn
 from spikingjelly.clock_driven import layer
-from spikingjelly.cext import neuron as cext_neuron
+from spikingjelly.clock_driven import neuron, surrogate
 __all__ = ['SEWResNet', 'sew_resnet18', 'sew_resnet34', 'sew_resnet50', 'sew_resnet101',
            'sew_resnet152']
+
+def create_msif():
+    return neuron.MultiStepIFNode(detach_reset=True, surrogate_function=surrogate.ATan())
 
 def conv3x3(in_planes, out_planes, stride=1, groups=1, dilation=1):
     """3x3 convolution with padding"""
@@ -34,7 +37,7 @@ class BasicBlock(nn.Module):
             conv3x3(inplanes, planes, stride),
             norm_layer(planes)
         )
-        self.sn1 = cext_neuron.MultiStepIFNode(detach_reset=True)
+        self.sn1 = create_msif()
 
         self.conv2 = layer.SeqToANNContainer(
             conv3x3(planes, planes),
@@ -42,7 +45,7 @@ class BasicBlock(nn.Module):
         )
         self.downsample = downsample
         self.stride = stride
-        self.sn2 = cext_neuron.MultiStepIFNode(detach_reset=True)
+        self.sn2 = create_msif()
 
     def forward(self, x):
         identity = x
@@ -79,13 +82,13 @@ class Bottleneck(nn.Module):
             conv1x1(inplanes, width),
             norm_layer(width)
         )
-        self.sn1 = cext_neuron.MultiStepIFNode(detach_reset=True)
+        self.sn1 = create_msif()
 
         self.conv2 = layer.SeqToANNContainer(
             conv3x3(width, width, stride, groups, dilation),
             norm_layer(width)
         )
-        self.sn2 = cext_neuron.MultiStepIFNode(detach_reset=True)
+        self.sn2 = create_msif()
 
         self.conv3 = layer.SeqToANNContainer(
             conv1x1(width, planes * self.expansion),
@@ -93,7 +96,7 @@ class Bottleneck(nn.Module):
         )
         self.downsample = downsample
         self.stride = stride
-        self.sn3 = cext_neuron.MultiStepIFNode(detach_reset=True)
+        self.sn3 = create_msif()
 
     def forward(self, x):
         identity = x
@@ -156,7 +159,7 @@ class SEWResNet(nn.Module):
         self.bn1 = norm_layer(self.inplanes)
 
 
-        self.sn1 = cext_neuron.MultiStepIFNode(detach_reset=True)
+        self.sn1 = create_msif()
         self.maxpool = layer.SeqToANNContainer(nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
 
         self.layer1 = self._make_layer(block, 64, layers[0], connect_f=connect_f)
@@ -192,7 +195,7 @@ class SEWResNet(nn.Module):
                     conv1x1(self.inplanes, planes * block.expansion, stride),
                     norm_layer(planes * block.expansion),
                 ),
-                cext_neuron.MultiStepIFNode(detach_reset=True)
+                create_msif()
             )
 
         layers = []
