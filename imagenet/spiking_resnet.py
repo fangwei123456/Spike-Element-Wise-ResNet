@@ -7,7 +7,7 @@ __all__ = ['SpikingResNet', 'spiking_resnet18', 'spiking_resnet34', 'spiking_res
            'spiking_resnet152']
 
 def create_msif():
-    return neuron.MultiStepIFNode(detach_reset=True, surrogate_function=surrogate.ATan())
+    return neuron.MultiStepIFNode(detach_reset=True, surrogate_function=surrogate.ATan(), backend='cupy')
 
 def conv3x3(in_planes, out_planes, stride=1, groups=1, dilation=1):
     """3x3 convolution with padding"""

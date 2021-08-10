@@ -6,7 +6,7 @@ __all__ = ['SEWResNet', 'sew_resnet18', 'sew_resnet34', 'sew_resnet50', 'sew_res
            'sew_resnet152']
 
 def create_msif():
-    return neuron.MultiStepIFNode(detach_reset=True, surrogate_function=surrogate.ATan())
+    return neuron.MultiStepIFNode(detach_reset=True, surrogate_function=surrogate.ATan(), backend='cupy')
 
 def conv3x3(in_planes, out_planes, stride=1, groups=1, dilation=1):
     """3x3 convolution with padding"""
