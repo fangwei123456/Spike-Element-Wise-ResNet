@@ -124,8 +124,8 @@ def main():
     else:
         raise NotImplementedError(args.lr_scheduler)
 
-    train_set_pth = os.path.join(args.dts_cache, 'train_set.pt')
-    test_set_pth = os.path.join(args.dts_cache, 'test_set.pt')
+    train_set_pth = os.path.join(args.dts_cache, f'train_set_{args.T}.pt')
+    test_set_pth = os.path.join(args.dts_cache, f'test_set_{args.T}.pt')
     if os.path.exists(train_set_pth) and os.path.exists(test_set_pth):
         train_set = torch.load(train_set_pth)
         test_set = torch.load(test_set_pth)
