@@ -74,5 +74,5 @@ python train.py --tb --amp --output-dir ./logs --model PlainNet --device cuda:0 
 You can also use multi GPUs to train the network. But it maybe unnecessary because using 1 GPU is fast enough.
 
 
-##New Implement
+# New Implement
 SpikingJelly has implemented SEW ResNet for ImageNet: https://github.com/fangwei123456/spikingjelly/blob/master/spikingjelly/clock_driven/model/sew_resnet.py
