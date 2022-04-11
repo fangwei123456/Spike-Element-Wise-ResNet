@@ -76,3 +76,23 @@ You can also use multi GPUs to train the network. But it maybe unnecessary becau
 
 # New Implement
 SpikingJelly has implemented SEW ResNet for ImageNet: https://github.com/fangwei123456/spikingjelly/blob/master/spikingjelly/clock_driven/model/sew_resnet.py
+
+Refer to this tutorial for how to use new version of SpikingJelly to train on ImageNet: https://spikingjelly.readthedocs.io/zh_CN/latest/clock_driven_en/16_train_large_scale_snn.html
+
+```python
+from spikingjelly.clock_driven import neuron, surrogate, functional
+from spikingjelly.clock_driven.model import sew_resnet
+import torch
+
+device = 'cpu'
+T = 4
+backend = 'torch'  # switch to `cupy` for faster training speed
+net = sew_resnet.multi_step_sew_resnet18(pretrained=False, progress=True, T=T, cnf='ADD', multi_step_neuron=neuron.MultiStepIFNode, v_threshold=1., surrogate_function=surrogate.ATan(), detach_reset=True, backend=backend)
+print(net)
+with torch.no_grad():
+    x = torch.rand([T, 1, 3, 224, 224], device=device)
+    print(net(x).shape)
+    functional.reset_net(net)
+```
+
+
