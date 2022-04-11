@@ -79,6 +79,7 @@ SpikingJelly has implemented SEW ResNet for ImageNet: https://github.com/fangwei
 
 Refer to this tutorial for how to use new version of SpikingJelly to train on ImageNet: https://spikingjelly.readthedocs.io/zh_CN/latest/clock_driven_en/16_train_large_scale_snn.html
 
+Here are the example codes of how to build the network:
 ```python
 from spikingjelly.clock_driven import neuron, surrogate, functional
 from spikingjelly.clock_driven.model import sew_resnet
