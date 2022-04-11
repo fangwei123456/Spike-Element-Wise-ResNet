@@ -89,6 +89,7 @@ device = 'cpu'
 T = 4
 backend = 'torch'  # switch to `cupy` for faster training speed
 net = sew_resnet.multi_step_sew_resnet18(pretrained=False, progress=True, T=T, cnf='ADD', multi_step_neuron=neuron.MultiStepIFNode, v_threshold=1., surrogate_function=surrogate.ATan(), detach_reset=True, backend=backend)
+net.to(device)
 print(net)
 with torch.no_grad():
     x = torch.rand([T, 1, 3, 224, 224], device=device)
