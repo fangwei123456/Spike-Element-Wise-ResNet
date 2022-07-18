@@ -4,8 +4,6 @@ This repository contains the codes for the paper [Deep Residual Learning in Spik
 
 Some of the trained models at last epoch or max test acc1 for **ImageNet** and **DVS Gesture** are available at: https://figshare.com/articles/software/Spike-Element-Wise-ResNet/14752998. The model with max test acc1 on **CIFAR10-DVS** is also available at this url, which was asked by a researcher. I find it from chat transcripts and upload it to figshare. But other models of **CIFAR10-DVS** are missed.
 
-
-
 ## Dependency
 
 The origin codes uses a specific SpikingJelly. To maximize reproducibility, the user can download the latest SpikingJelly and rollback to the version that we used to train:
@@ -24,6 +22,12 @@ commit 2958519df84ad77c316c6e6fbfac96fb2e5f59a3
 Author: fangwei123456 <fangwei123456@pku.edu.cn>
 Date:   Wed May 12 18:05:33 2021 +0800
 ```
+
+Note that there is a bug in this version of SJ:
+
+Bug: MultiStepParametricLIFNode
+
+https://github.com/fangwei123456/spikingjelly/blob/master/bugs.md
 
 # Running Examples
 
