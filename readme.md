@@ -23,7 +23,7 @@ Author: fangwei123456 <fangwei123456@pku.edu.cn>
 Date:   Wed May 12 18:05:33 2021 +0800
 ```
 
-Note that there is a bug in this version of SJ:
+Note that there is a bug in this version of SpikingJelly:
 
 Bug: MultiStepParametricLIFNode
 
