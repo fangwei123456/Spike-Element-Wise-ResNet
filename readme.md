@@ -6,6 +6,18 @@ Some of the trained models at last epoch or max test acc1 for **ImageNet** and *
 
 ## Dependency
 
+We suggest to use anaconda install all packages.
+
+Install `torch>=1.5.0` by referring to:
+
+https://pytorch.org/get-started/previous-versions/
+
+Install `tensorboard`:
+
+```shell
+pip install tensorboard
+```
+
 The origin codes uses a specific SpikingJelly. To maximize reproducibility, the user can download the latest SpikingJelly and rollback to the version that we used to train:
 
 ```bash
@@ -83,11 +95,13 @@ You can also use multi GPUs to train the network. But it maybe unnecessary becau
 
 
 # New Implement
+
 SpikingJelly has implemented SEW ResNet for ImageNet: https://github.com/fangwei123456/spikingjelly/blob/master/spikingjelly/clock_driven/model/sew_resnet.py
 
 Refer to this tutorial for how to use new version of SpikingJelly to train on ImageNet: https://spikingjelly.readthedocs.io/zh_CN/latest/clock_driven_en/16_train_large_scale_snn.html
 
 Here are the example codes of how to build the network:
+
 ```python
 from spikingjelly.clock_driven import neuron, surrogate, functional
 from spikingjelly.clock_driven.model import sew_resnet
@@ -104,5 +118,3 @@ with torch.no_grad():
     print(net(x).shape)
     functional.reset_net(net)
 ```
-
-
