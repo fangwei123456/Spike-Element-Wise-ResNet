@@ -96,19 +96,21 @@ You can also use multi GPUs to train the network. But it maybe unnecessary becau
 
 # New Implement
 
-SpikingJelly has implemented SEW ResNet for ImageNet: https://github.com/fangwei123456/spikingjelly/blob/0.0.0.0.12/spikingjelly/clock_driven/model/sew_resnet.py
+SpikingJelly has implemented SEW ResNet for ImageNet (version 0.0.0.0.12 or the latest) : 
 
-Refer to this tutorial for how to use new version (0.0.0.0.12 or the latest) of SpikingJelly to train on ImageNet: 
-
-0.0.0.0.12: https://spikingjelly.readthedocs.io/zh_CN/latest/clock_driven_en/16_train_large_scale_snn.html
+0.0.0.0.12: https://github.com/fangwei123456/spikingjelly/blob/0.0.0.0.12/spikingjelly/clock_driven/model/sew_resnet.py
 
 latest: https://github.com/fangwei123456/spikingjelly/blob/master/spikingjelly/activation_based/model/sew_resnet.py
 
-Here are the example codes of how to build the network:
+Refer to this tutorial for how to use new version of SpikingJelly to train on ImageNet: 
 
 0.0.0.0.12: https://spikingjelly.readthedocs.io/zh_CN/0.0.0.0.12/clock_driven_en/16_train_large_scale_snn.html
 
 latest: https://spikingjelly.readthedocs.io/zh_CN/latest/activation_based_en/train_large_scale_snn.html
+
+Here are the example codes of how to build the network:
+
+
 
 ```python
 from spikingjelly.clock_driven import neuron, surrogate, functional
